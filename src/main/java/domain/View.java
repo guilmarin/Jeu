@@ -26,4 +26,8 @@ public class View {
     public void setLinks(ArrayList<Link> links) {
         this.links = links;
     }
+
+    public void addLink(Link link){
+        links.add(link);
+    }
 }
