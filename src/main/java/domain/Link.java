@@ -5,19 +5,30 @@ public class Link {
     private int position_x;
     private int position_y;
     private int scale;
+    private String direction;
 
-    public Link(String linkName, int position_x, int position_y, int scale) {
+    public Link(String linkName, int position_x, int position_y, int scale, String direction) {
         this.linkName = linkName;
         this.position_x = position_x;
         this.position_y = position_y;
         this.scale = scale;
+        this.direction=direction;
     }
 
     public String getLinkName() {
         return linkName;
     }
 
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     public void setLinkName(String linkName) {
+
         this.linkName = linkName;
     }
 
