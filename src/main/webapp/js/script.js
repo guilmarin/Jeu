@@ -82,4 +82,10 @@ $(document).ready(function() {
 		var arrivee = navig.arrivees[index];
 		navig = charge_vue(arrivee);
 	});
+
+    $("#jeu").on("click","img",function(){
+        $.ajax({ type: "GET", url:"/test", datatype: "json", success: function( data ) {
+            alert(data); }
+        });
+    });
 });
