@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-    var view={"name" : "../img/Ping.jpg",
-        "links": [{"id" : "leftArrow", "icone":"../img/Fleche_g.png", "x":35, "y":65, "size":10 , "destination":"../img/Tableau.jpg"},
-                {"id" : "rightArrow", "icone":"../img/Fleche_d.png", "x":55, "y":65, "size":10 , "destination":"../img/Mur.jpg"},
-                {"id" : "downArrow", "icone":"../img/Fleche_b.png", "x":45, "y":65, "size":10 , "destination":"../img/Sortie.jpg"}
+    var view={"name" : "Ping",
+        "links": [{"id" : "leftArrow", "icone":"Fleche_g", "x":35, "y":65, "size":10 , "destination":"Tableau"},
+                {"id" : "rightArrow", "icone":"Fleche_d", "x":55, "y":65, "size":10 , "destination":"Mur"},
+                {"id" : "downArrow", "icone":"Fleche_b", "x":45, "y":65, "size":10 , "destination":"Sortie"}
                 ]} ;
 
     var Img = document.createElement("img");
@@ -18,12 +18,12 @@ $(document).ready(function() {
 
     function show(view){
         div_links.innerHTML="";
-        document.getElementById("vue").src = view.name;
+        document.getElementById("vue").src = "../img/" + view.name + ".jpg";
         var links=view.links;
         n=links.length;
-        for(i=0; i<n; i++){
+        for(var i=0; i<n; i++){
             var link = document.createElement("img");
-            link.setAttribute("src", links[i].icone);
+            link.setAttribute("src", "../img/" + links[i].icone + ".png");
             link.setAttribute("id", links[i].id);
             link.style.marginLeft = links[i].x + "%";
             link.style.marginTop = links[i].y + "%";
@@ -32,21 +32,26 @@ $(document).ready(function() {
         }
     }
 
-    $("#liens").on("click","img",function(){
-        var id = this.getAttribute("id");
-        var links=view.links;
-        var destination=view.name;
-        for(i=0;i<links.length;i++){
-            if(id==links[i].id){
-                destination=links[i].destination;
+    function getDestination(id){
+        var links = view.links;
+        var destination = view.name;
+        for(var i = 0; i<links.length; i++){
+            if(id == links[i].id){
+                destination = links[i].destination;
             }
         }
+        return destination;
+    }
 
-        alert(destination);
 
-
+    $("#liens").on("click","img",function(){
+        var id = this.getAttribute("id");
+        var destination = getDestination(id);
+        $.ajax({ type: "GET", url:"/getJSON/" + destination, datatype: "json", success: function( newViewString ) {
+            var newView = jQuery.parseJSON(newViewString);
+            view = newView;
+            show(view);
+            }
+        });
     });
-
-
-
 });
