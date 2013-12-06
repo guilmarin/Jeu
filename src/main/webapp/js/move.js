@@ -1,15 +1,15 @@
 $(document).ready(function() {
 
-    var view={"name" : "Ping",
-        "links": [{"id" : "leftArrow", "icone":"Fleche_g", "x":35, "y":65, "size":10 , "destination":"Tableau"},
-                {"id" : "rightArrow", "icone":"Fleche_d", "x":55, "y":65, "size":10 , "destination":"Mur"},
-                {"id" : "downArrow", "icone":"Fleche_b", "x":45, "y":65, "size":10 , "destination":"Sortie"}
+    var view = {"name" : "Ping",
+        "links": [{"_id" : "leftArrow", "icone":"Fleche_g", "x":35, "y":65, "size":10 , "destination":"Tableau"},
+                {"_id" : "rightArrow", "icone":"Fleche_d", "x":55, "y":65, "size":10 , "destination":"Mur"},
+                {"_id" : "downArrow", "icone":"Fleche_b", "x":45, "y":65, "size":10 , "destination":"Sortie"}
                 ]} ;
 
     var Img = document.createElement("img");
 
     Img.setAttribute("id", "vue");
-    Img.setAttribute("src", view.name);
+    Img.setAttribute("src", "../img/" + view.name + ".jpg");
     var div_game = document.getElementById("jeu");
     var div_links = document.getElementById("liens");
     div_game.insertBefore(Img,div_links);
@@ -17,14 +17,14 @@ $(document).ready(function() {
     show(view);
 
     function show(view){
-        div_links.innerHTML="";
+        div_links.innerHTML = "";
         document.getElementById("vue").src = "../img/" + view.name + ".jpg";
-        var links=view.links;
-        n=links.length;
+        var links = view.links;
+        n = links.length;
         for(var i=0; i<n; i++){
             var link = document.createElement("img");
             link.setAttribute("src", "../img/" + links[i].icone + ".png");
-            link.setAttribute("id", links[i].id);
+            link.setAttribute("id", links[i]._id);
             link.style.marginLeft = links[i].x + "%";
             link.style.marginTop = links[i].y + "%";
             link.style.width = links[i].size + "%";
@@ -32,11 +32,11 @@ $(document).ready(function() {
         }
     }
 
-    function getDestination(id){
+    function getDestination(_id){
         var links = view.links;
         var destination = view.name;
         for(var i = 0; i<links.length; i++){
-            if(id == links[i].id){
+            if(_id == links[i]._id){
                 destination = links[i].destination;
             }
         }
@@ -45,8 +45,8 @@ $(document).ready(function() {
 
 
     $("#liens").on("click","img",function(){
-        var id = this.getAttribute("id");
-        var destination = getDestination(id);
+        var _id = this.getAttribute("id");
+        var destination = getDestination(_id);
         $.ajax({ type: "GET", url:"/getJSON/" + destination, datatype: "json", success: function( newViewString ) {
             var newView = jQuery.parseJSON(newViewString);
             view = newView;

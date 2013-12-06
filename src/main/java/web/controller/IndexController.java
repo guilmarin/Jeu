@@ -25,7 +25,7 @@ public class IndexController {
             jsonObject.put("name", "Tableau");
 
 
-            link1.put("id", "leftArrow");
+            link1.put("_id", "leftArrow");
             link1.put("icone", "Fleche_g");
             link1.put("x", 35);
             link1.put("y", 65);
@@ -33,7 +33,7 @@ public class IndexController {
             link1.put("destination", "Sortie");
 
 
-            link2.put("id", "rightArrow");
+            link2.put("_id", "rightArrow");
             link2.put("icone", "Fleche_d");
             link2.put("x", 55);
             link2.put("y", 65);
@@ -41,7 +41,7 @@ public class IndexController {
             link2.put("destination", "Ping");
 
 
-            link3.put("id", "downArrow");
+            link3.put("_id", "downArrow");
             link3.put("icone", "Fleche_b");
             link3.put("x", 45);
             link3.put("y", 65);
@@ -53,7 +53,7 @@ public class IndexController {
             jsonObject.put("name", "Sortie");
 
 
-            link1.put("id", "leftArrow");
+            link1.put("_id", "leftArrow");
             link1.put("icone", "Fleche_g");
             link1.put("x", 35);
             link1.put("y", 65);
@@ -61,7 +61,7 @@ public class IndexController {
             link1.put("destination", "Mur");
 
 
-            link2.put("id", "rightArrow");
+            link2.put("_id", "rightArrow");
             link2.put("icone", "Fleche_d");
             link2.put("x", 55);
             link2.put("y", 65);
@@ -69,7 +69,7 @@ public class IndexController {
             link2.put("destination", "Tableau");
 
 
-            link3.put("id", "downArrow");
+            link3.put("_id", "downArrow");
             link3.put("icone", "Fleche_b");
             link3.put("x", 45);
             link3.put("y", 65);
@@ -81,7 +81,7 @@ public class IndexController {
             jsonObject.put("name", "Mur");
 
 
-            link1.put("id", "leftArrow");
+            link1.put("_id", "leftArrow");
             link1.put("icone", "Fleche_g");
             link1.put("x", 35);
             link1.put("y", 65);
@@ -89,7 +89,7 @@ public class IndexController {
             link1.put("destination", "Ping");
 
 
-            link2.put("id", "rightArrow");
+            link2.put("_id", "rightArrow");
             link2.put("icone", "Fleche_d");
             link2.put("x", 55);
             link2.put("y", 65);
@@ -97,7 +97,7 @@ public class IndexController {
             link2.put("destination", "Sortie");
 
 
-            link3.put("id", "downArrow");
+            link3.put("_id", "downArrow");
             link3.put("icone", "Fleche_b");
             link3.put("x", 45);
             link3.put("y", 65);
@@ -109,7 +109,7 @@ public class IndexController {
             jsonObject.put("name", "Ping");
 
 
-            link1.put("id", "leftArrow");
+            link1.put("_id", "leftArrow");
             link1.put("icone", "Fleche_g");
             link1.put("x", 35);
             link1.put("y", 65);
@@ -117,7 +117,7 @@ public class IndexController {
             link1.put("destination", "Tableau");
 
 
-            link2.put("id", "rightArrow");
+            link2.put("_id", "rightArrow");
             link2.put("icone", "Fleche_d");
             link2.put("x", 55);
             link2.put("y", 65);
@@ -125,7 +125,7 @@ public class IndexController {
             link2.put("destination", "Mur");
 
 
-            link3.put("id", "downArrow");
+            link3.put("_id", "downArrow");
             link3.put("icone", "Fleche_b");
             link3.put("x", 45);
             link3.put("y", 65);
