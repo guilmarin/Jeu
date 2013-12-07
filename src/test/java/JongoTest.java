@@ -21,7 +21,6 @@ public class JongoTest {
     public void createNewDB() throws UnknownHostException {
         db = new MongoClient().getDB("test");
         jongo = new Jongo(db);
-
     }
 
     @After
@@ -33,17 +32,17 @@ public class JongoTest {
     public void findJSONTest(){
         MongoCollection views = jongo.getCollection("views");
 
-        views.insert("{name: 'Ping', links: [{id: 'leftArrow', icone: 'Fleche_g', x: 35, y: 65, size: 10, destination: 'Tableau'}," +
-                "{id: 'rightArrow', icone: 'Fleche_d', x: 55, y: 65, size: 10, destination: 'Mur'}]}");
+        views.insert("{_id: 'Ping', links: [{_id: 'leftArrow', icone: 'Fleche_g', x: 35, y: 65, size: 10, destination: 'Tableau'}," +
+                "{_id: 'rightArrow', icone: 'Fleche_d', x: 55, y: 65, size: 10, destination: 'Mur'}]}");
 
-        View view_db = views.findOne("{name: 'Ping'}").as(View.class);
+        View view_db = views.findOne("{_id: 'Ping'}").as(View.class);
 
         Link link1 = new Link("leftArrow", "Fleche_g", 35, 65, 10, "Tableau");
         Link link2 = new Link("rightArrow", "Fleche_d", 55, 65, 10, "Mur");
         ArrayList<Link> links = new ArrayList<>();
         links.add(link1);
         links.add(link2);
-        View view = new View(new ObjectId(), "Ping", links);
+        View view = new View("Ping", links);
 
         Assert.assertEquals(view, view_db);
     }

@@ -1,24 +1,20 @@
 $(document).ready(function() {
 
-    var view = {"name" : "Ping",
-        "links": [{"_id" : "leftArrow", "icone":"Fleche_g", "x":35, "y":65, "size":10 , "destination":"Tableau"},
-                {"_id" : "rightArrow", "icone":"Fleche_d", "x":55, "y":65, "size":10 , "destination":"Mur"},
-                {"_id" : "downArrow", "icone":"Fleche_b", "x":45, "y":65, "size":10 , "destination":"Sortie"}
-                ]} ;
+    var start = "Ping";
+    var view = {};
 
     var Img = document.createElement("img");
-
     Img.setAttribute("id", "vue");
-    Img.setAttribute("src", "../img/" + view.name + ".jpg");
+    Img.setAttribute("src", "../img/" + start + ".jpg");
     var div_game = document.getElementById("jeu");
     var div_links = document.getElementById("liens");
     div_game.insertBefore(Img,div_links);
 
-    show(view);
+    changeView(start);
 
     function show(view){
         div_links.innerHTML = "";
-        document.getElementById("vue").src = "../img/" + view.name + ".jpg";
+        document.getElementById("vue").src = "../img/" + view._id + ".jpg";
         var links = view.links;
         n = links.length;
         for(var i=0; i<n; i++){
@@ -34,7 +30,7 @@ $(document).ready(function() {
 
     function getDestination(_id){
         var links = view.links;
-        var destination = view.name;
+        var destination = view._id;
         for(var i = 0; i<links.length; i++){
             if(_id == links[i]._id){
                 destination = links[i].destination;
@@ -44,14 +40,18 @@ $(document).ready(function() {
     }
 
 
-    $("#liens").on("click","img",function(){
-        var _id = this.getAttribute("id");
-        var destination = getDestination(_id);
+    function changeView(destination){
         $.ajax({ type: "GET", url:"/getJSON/" + destination, datatype: "json", success: function( newViewString ) {
             var newView = jQuery.parseJSON(newViewString);
             view = newView;
-            show(view);
-            }
+            show(view);}
         });
+    }
+
+
+    $("#liens").on("click","img",function(){
+        var _id = this.getAttribute("id");
+        var destination = getDestination(_id);
+        changeView(destination);
     });
 });

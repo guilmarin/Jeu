@@ -1,31 +1,28 @@
 package domain;
 
 
-import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
 import java.util.ArrayList;
 
 public class View {
     @Id
-    private ObjectId _id;
-    private String name;
+    private String _id;
     private ArrayList<Link> links;
 
-    public View(ObjectId _id, String name, ArrayList<Link> links) {
-        this._id = _id;
+    public View(String _id, ArrayList<Link> links) {
         this.links = links;
-        this.name = name;
+        this._id = _id;
     }
 
     public View(){}
 
-    public String getName() {
-        return name;
+    public String get_id() {
+        return _id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public ArrayList<Link> getLinks() {
@@ -40,14 +37,6 @@ public class View {
         links.add(link);
     }
 
-    public ObjectId get_id() {
-        return _id;
-    }
-
-    public void set_id(ObjectId _id) {
-        this._id = _id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,14 +45,14 @@ public class View {
         View view = (View) o;
 
         if (links != null ? !links.equals(view.links) : view.links != null) return false;
-        if (name != null ? !name.equals(view.name) : view.name != null) return false;
+        if (_id != null ? !_id.equals(view._id) : view._id != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = _id != null ? _id.hashCode() : 0;
         result = 31 * result + (links != null ? links.hashCode() : 0);
         return result;
     }
@@ -71,8 +60,7 @@ public class View {
     @Override
     public String toString() {
         return "View{" +
-                "_id=" + _id +
-                ", name='" + name + '\'' +
+                "_id='" + _id + '\'' +
                 ", links=" + links +
                 '}';
     }
