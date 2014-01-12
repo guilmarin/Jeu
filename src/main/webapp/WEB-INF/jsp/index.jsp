@@ -15,7 +15,28 @@
 			<div id="liens">
 				
 			</div>
-			
+
+            <div id="PNJs">
+                <img src="../img/Mario.png">
+            </div>
+
+            <div id="dialogue">
+                <div id="nom_PNJ">
+
+                </div>
+
+                <div id="quitter_dialogue">
+
+                </div>
+
+                <div id="zone_texte">
+
+                </div>
+
+                <div id="reponse">
+
+                </div>
+            </div>
 		</div>
 
     </body>

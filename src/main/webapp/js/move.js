@@ -54,4 +54,49 @@ $(document).ready(function() {
         var destination = getDestination(_id);
         changeView(destination);
     });
+
+    $("#PNJs").on("click","img",function(){
+        var nom_PNJ = "Mario";
+        var texte = "Tu veux être mon ami?";
+        var oui = document.createElement("img");
+        oui.setAttribute("id", "oui");
+        oui.setAttribute("src", "../img/oui.jpg");
+        oui.style.width = "7%";
+        document.getElementById("reponse").appendChild(oui);
+
+        var non = document.createElement("img");
+        non.setAttribute("id", "non");
+        non.setAttribute("src", "../img/non.jpg");
+        non.style.width = "7%";
+        document.getElementById("reponse").appendChild(non);
+
+        document.getElementById("nom_PNJ").innerHTML = nom_PNJ;
+        document.getElementById("zone_texte").innerHTML = texte;
+
+        var Croix = document.createElement("img");
+        Croix.setAttribute("id", "croix");
+        Croix.setAttribute("src", "../img/Croix.png");
+        Croix.style.width = "3%";
+        document.getElementById("quitter_dialogue").appendChild(Croix);
+        div_links.style.display = "none";
+    });
+
+    $("#quitter_dialogue").on("click","img",function(){
+        document.getElementById("nom_PNJ").innerHTML = "";
+        document.getElementById("zone_texte").innerHTML = "";
+        document.getElementById("reponse").innerHTML = "";
+        document.getElementById("quitter_dialogue").innerHTML = "";
+        div_links.style.display = "block";
+    });
+
+    $("#reponse").on("click","img",function(){
+        var id = this.getAttribute("id");
+        if (id == "oui"){
+            document.getElementById("zone_texte").innerHTML = "Bah pas moi! HAHA!";
+        }
+        if (id == "non"){
+            document.getElementById("zone_texte").innerHTML = "Stinky little bastard!";
+        }
+        document.getElementById("reponse").innerHTML = "";
+    });
 });

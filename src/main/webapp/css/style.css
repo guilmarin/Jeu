@@ -7,8 +7,6 @@
 }
 #jeu img{
 	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 #liens img{
@@ -19,4 +17,48 @@
 #vue{
 	width: 100%;
 	z-index: 1;
+}
+
+#PNJs img{
+    position: absolute;
+    width: 10%;
+    z-index: 2;
+}
+
+#dialogue{
+    position: absolute;
+    margin-top: 63%;
+    z-index: 3;
+    width: 100%;
+}
+
+#zone_texte{
+    background-color: black;
+    color: red;
+    width: 100%;
+}
+
+#nom_PNJ{
+    background-color: blue;
+    color: white;
+    width: 10%;
+    text-align: center;
+}
+
+#reponse img{
+    position: absolute;
+}
+
+#oui{
+    left: 30%;
+}
+
+#non{
+    right: 30%;
+}
+
+#quitter_dialogue img{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
