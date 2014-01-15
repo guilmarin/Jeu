@@ -8,12 +8,16 @@ $(document).ready(function() {
     Img.setAttribute("src", "../img/" + start + ".jpg");
     var div_game = document.getElementById("jeu");
     var div_links = document.getElementById("liens");
+    var div_pnjs = document.getElementById("pnjs");
     div_game.insertBefore(Img,div_links);
+    div_game.insertBefore(Img,div_pnjs);
+
 
     changeView(start);
 
     function show(view){
         div_links.innerHTML = "";
+        div_pnjs.innerHTML="";
         document.getElementById("vue").src = "../img/" + view._id + ".jpg";
         var links = view.links;
         n = links.length;
@@ -26,7 +30,21 @@ $(document).ready(function() {
             link.style.width = links[i].size + "%";
             div_links.appendChild(link);
         }
+        if(view.pnjs != null){
+            var pnjs = view.pnjs;
+            var length = pnjs.length;
+            for(var i=0; i<length; i++){
+                var pnj = document.createElement("img");
+                pnj.setAttribute("src", "../img/" + pnjs[i].icone + ".png");
+                pnj.setAttribute("id", pnjs[i]._id);
+                pnj.style.marginLeft = pnjs[i].x + "%";
+                pnj.style.marginTop = pnjs[i].y + "%";
+                pnj.style.width = pnjs[i].size + "%";
+                div_pnjs.appendChild(pnj);
+            }
+        }
     }
+
 
     function getDestination(_id){
         var links = view.links;
@@ -37,6 +55,17 @@ $(document).ready(function() {
             }
         }
         return destination;
+    }
+
+    function getPnj(_id){
+        var pnjs = view.pnjs;
+
+        for(var i = 0; i<pnjs.length; i++){
+            if(_id == pnjs[i]._id){
+                pnj = pnjs[i]
+            }
+        }
+        return pnj;
     }
 
 
@@ -55,9 +84,11 @@ $(document).ready(function() {
         changeView(destination);
     });
 
-    $("#PNJs").on("click","img",function(){
-        var nom_PNJ = "Mario";
-        var texte = "Tu veux être mon ami?";
+    $("#pnjs").on("click","img",function(){
+        var pnj=getPnj(this.getAttribute("id"));
+
+        var nom_PNJ = pnj.name;
+        var texte = pnj.text;
         var oui = document.createElement("img");
         oui.setAttribute("id", "oui");
         oui.setAttribute("src", "../img/oui.jpg");

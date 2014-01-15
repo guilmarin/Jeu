@@ -16,8 +16,8 @@
 				
 			</div>
 
-            <div id="PNJs">
-                <img src="../img/Mario.png">
+            <div id="pnjs">
+
             </div>
 
             <div id="dialogue">
