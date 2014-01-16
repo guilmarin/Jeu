@@ -123,10 +123,10 @@ $(document).ready(function() {
     $("#reponse").on("click","img",function(){
         var id = this.getAttribute("id");
         if (id == "oui"){
-            document.getElementById("zone_texte").innerHTML = "Bah pas moi! HAHA!";
+            document.getElementById("zone_texte").innerHTML = pnj.accept;
         }
         if (id == "non"){
-            document.getElementById("zone_texte").innerHTML = "Stinky little bastard!";
+            document.getElementById("zone_texte").innerHTML = pnj.decline;
         }
         document.getElementById("reponse").innerHTML = "";
     });
